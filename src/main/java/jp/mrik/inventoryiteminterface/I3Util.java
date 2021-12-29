@@ -196,6 +196,7 @@ public class I3Util {
         I3Item i3 = new I3Item(item);
         i3.addClickEvent(event -> I3API.openInv(backUnique,p,inv,backInv,args));
         inv.setItem(49, i3);
+        inv.setClickCancel(true);
         return inv;
     }
 

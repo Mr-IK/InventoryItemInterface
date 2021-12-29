@@ -164,15 +164,15 @@ public class I3Instance implements Listener {
         for(Consumer<InventoryClickEvent> clickEvent: eventMap){
             clickEvent.accept(e);
         }
+        if(clickCancel){
+            e.setCancelled(true);
+        }
 
         if(!itemMap.containsKey(e.getRawSlot())){
             return;
         }
         I3Item item = itemMap.get(e.getRawSlot());
         e.setCancelled(item.clickEvent(e));
-        if(clickCancel){
-            e.setCancelled(true);
-        }
     }
 
     @EventHandler
