@@ -9,6 +9,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -119,9 +120,9 @@ public class I3Instance implements Listener {
         if(opener!=null){
             return;
         }
-        p.closeInventory();
+        Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, (Runnable) p::closeInventory);
         opener = p.getUniqueId();
-        p.openInventory(inv);
+        Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, ()-> p.openInventory(inv));
     }
 
     //event register and open inv
@@ -157,7 +158,7 @@ public class I3Instance implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent e){
-        if(opener!=e.getWhoClicked().getUniqueId()){
+        if(opener==null||opener!=e.getWhoClicked().getUniqueId()){
             return;
         }
         for(Consumer<InventoryClickEvent> clickEvent: eventMap){
@@ -176,7 +177,7 @@ public class I3Instance implements Listener {
 
     @EventHandler
     public void onClose(InventoryCloseEvent e){
-        if(opener!=e.getPlayer().getUniqueId()){
+        if(opener==null||opener!=e.getPlayer().getUniqueId()){
             return;
         }
 
