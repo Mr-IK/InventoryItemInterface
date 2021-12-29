@@ -12,7 +12,7 @@ public class I3Item implements I3Clicker{
     private ItemStack item;
     private List<Consumer<InventoryClickEvent>> events = new ArrayList<>();
 
-    private boolean clickCancel = false;
+    private boolean clickCancel = true;
 
     public I3Item(ItemStack item){
         this.item = item;
