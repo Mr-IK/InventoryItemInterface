@@ -164,11 +164,11 @@ public class I3Instance implements Listener {
         if(opener==null||opener!=e.getWhoClicked().getUniqueId()){
             return;
         }
-        for(Consumer<InventoryClickEvent> clickEvent: eventMap){
-            clickEvent.accept(e);
-        }
         if(clickCancel){
             e.setCancelled(true);
+        }
+        for(Consumer<InventoryClickEvent> clickEvent: eventMap){
+            clickEvent.accept(e);
         }
 
         if(!itemMap.containsKey(e.getRawSlot())){
