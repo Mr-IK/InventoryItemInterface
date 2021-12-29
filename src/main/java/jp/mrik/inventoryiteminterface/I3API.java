@@ -2,6 +2,7 @@ package jp.mrik.inventoryiteminterface;
 
 import jp.mrik.inventoryiteminterface.rename.UpdateTitle;
 import jp.mrik.inventoryiteminterface.rename.UpdateTitle_1_16_5;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -21,6 +22,10 @@ public class I3API {
     }
 
     public static void openInv(String uniqueName, Player p, I3Instance inv, String name, String[] args){
+        if(uniqueName.equals("close")&&name.equals("close")){
+            Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, (Runnable) p::closeInventory);
+            return;
+        }
         if(inventorys.containsKey(uniqueName)){
             inventorys.get(uniqueName).openGUI(p,inv,name,args);
         }
