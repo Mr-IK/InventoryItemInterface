@@ -9,7 +9,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -120,9 +119,13 @@ public class I3Instance implements Listener {
         if(opener!=null){
             return;
         }
-        Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, (Runnable) p::closeInventory);
         opener = p.getUniqueId();
         Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, ()-> p.openInventory(inv));
+    }
+
+    public void updateInv(Player p){
+        updateTitle(p,name);
+        p.updateInventory();
     }
 
     //event register and open inv
@@ -180,7 +183,6 @@ public class I3Instance implements Listener {
         if(opener==null||opener!=e.getPlayer().getUniqueId()){
             return;
         }
-
         opener = null;
         HandlerList.unregisterAll(this);
 
