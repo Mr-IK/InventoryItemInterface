@@ -74,13 +74,24 @@ public class I3Instance implements Listener {
         return name;
     }
 
+    //contain item
+    public boolean containItem(int i){
+        return itemMap.containsKey(i);
+    }
+
     //get item
     public ItemStack getItem(int i){
+        if(containItem(i)){
+            return null;
+        }
         return itemMap.get(i).getItem();
     }
 
     //get i3item
     public I3Item getI3Item(int i){
+        if(containItem(i)){
+            return null;
+        }
         return itemMap.get(i);
     }
 
