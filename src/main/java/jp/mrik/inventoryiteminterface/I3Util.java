@@ -24,19 +24,19 @@ public class I3Util {
         return inv;
     }
 
-    public static I3Instance getOnReturn3_9Inv(Player p,String name,String backUnique,String backInv,String[] args){
+    public static I3Instance getOnReturn3_9Inv(Player p,String name,String backUnique){
         I3Instance inv = get3_9Inv(name);
         I3Item i3 = I3C.create(Material.DARK_OAK_DOOR).setDisplay("§c§l戻る").setLore("§e前のページに戻ります。").getI3Item();
-        i3.addClickEvent(event -> I3API.openInv(backUnique,p,inv,backInv,args));
+        i3.addClickEvent(event -> I3API.openInv(backUnique,p,inv));
         inv.setItem(18,i3);
         return inv;
     }
 
-    public static I3Instance getOnReturn3_9Inv(Player p,I3Instance invs,String name,String backUnique,String backInv,String[] args){
+    public static I3Instance getOnReturn3_9Inv(Player p,I3Instance invs,String name,String backUnique){
         I3Instance inv = get3_9Inv(p,invs,name);
         I3Item i3 = I3C.create(Material.DARK_OAK_DOOR).setDisplay("§c§l戻る").setLore("§e前のページに戻ります。").getI3Item();
         i3.addClickEvent(event -> {
-            I3API.openInv(backUnique,p,inv,backInv,args);
+            I3API.openInv(backUnique,p,inv);
         });
         inv.setItem(18,i3);
         return inv;
@@ -60,7 +60,7 @@ public class I3Util {
         return inv;
     }
 
-    public static I3Instance getListupInv(Player p, I3Instance invs,String name,int page,int max,String backUnique,String backInv,String[] args){
+    public static I3Instance getListupInv(Player p, I3Instance invs,String name,int page,int max,String backUnique){
         I3Instance inv = get6_9Inv(p,invs,name+" Page:"+page);
         inv.clearInv();
         ItemStack wall = I3C.create(Material.BLACK_STAINED_GLASS_PANE).setDisplay(" ").getItem();
@@ -78,7 +78,7 @@ public class I3Util {
         }
         inv.setItems(new int[]{47,48,50,51},new I3Item(wall));
         I3Item i3 = I3C.create(Material.DARK_OAK_DOOR).setDisplay("§c§l戻る").setLore("§e前のページに戻ります。").getI3Item();
-        i3.addClickEvent(event -> I3API.openInv(backUnique,p,inv,backInv,args));
+        i3.addClickEvent(event -> I3API.openInv(backUnique,p,inv));
         inv.setItem(49, i3);
         inv.setClickCancel(true);
         return inv;
