@@ -81,7 +81,7 @@ public class I3Instance implements Listener {
 
     //get item
     public ItemStack getItem(int i){
-        if(containItem(i)){
+        if(!containItem(i)){
             return null;
         }
         return itemMap.get(i).getItem();
@@ -89,7 +89,7 @@ public class I3Instance implements Listener {
 
     //get i3item
     public I3Item getI3Item(int i){
-        if(containItem(i)){
+        if(!containItem(i)){
             return null;
         }
         return itemMap.get(i);
