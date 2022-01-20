@@ -31,4 +31,14 @@ public class I3API {
             inventorys.get(uniqueName).accept(new I3Executer(p,inv));
         }
     }
+
+    public static void openInv(String uniqueName, Player p, I3Instance inv,String... args){
+        if(uniqueName.equals("close")){
+            Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, (Runnable) p::closeInventory);
+            return;
+        }
+        if(inventorys.containsKey(uniqueName)){
+            inventorys.get(uniqueName).accept(new I3Executer(p,inv));
+        }
+    }
 }
