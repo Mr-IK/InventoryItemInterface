@@ -22,6 +22,10 @@ public class I3API {
         return true;
     }
 
+    public static void closeInv(Player p){
+        Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, (Runnable) p::closeInventory);
+    }
+
     public static void openInv(String uniqueName, Player p, I3Instance inv){
         if(uniqueName.equals("close")){
             Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, (Runnable) p::closeInventory);
