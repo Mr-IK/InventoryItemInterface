@@ -2,6 +2,7 @@ package jp.mrik.inventoryiteminterface;
 
 import jp.mrik.inventoryiteminterface.rename.UpdateTitle;
 import jp.mrik.inventoryiteminterface.rename.UpdateTitle_1_16_5;
+import jp.mrik.timerthreadtools.T3Util;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -23,12 +24,12 @@ public class I3API {
     }
 
     public static void closeInv(Player p){
-        Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, (Runnable) p::closeInventory);
+        T3Util.sync(p::closeInventory);
     }
 
     public static void openInv(String uniqueName, Player p, I3Instance inv){
         if(uniqueName.equals("close")){
-            Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, (Runnable) p::closeInventory);
+            T3Util.sync(p::closeInventory);
             return;
         }
         if(inventorys.containsKey(uniqueName)){
@@ -48,7 +49,7 @@ public class I3API {
 
     public static void openInv(String uniqueName, Player p, I3Instance inv,String... args){
         if(uniqueName.equals("close")){
-            Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, (Runnable) p::closeInventory);
+            T3Util.sync(p::closeInventory);
             return;
         }
         if(inventorys.containsKey(uniqueName)){

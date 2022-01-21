@@ -1,5 +1,6 @@
 package jp.mrik.inventoryiteminterface;
 
+import jp.mrik.timerthreadtools.T3Util;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -120,7 +121,7 @@ public class I3Instance implements Listener {
             return;
         }
         opener = p.getUniqueId();
-        Bukkit.getScheduler().runTask(InventoryItemInterface.plugin, ()-> p.openInventory(inv));
+        T3Util.sync(()-> p.openInventory(inv));
     }
 
     public void updateInv(Player p){
