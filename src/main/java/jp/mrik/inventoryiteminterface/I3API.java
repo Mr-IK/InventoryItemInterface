@@ -6,15 +6,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
-import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class I3API {
 
     public final static UpdateTitle updateTitle = new UpdateTitle_1_16_5();
 
-    private static final HashMap<String, Consumer<I3Executer>> inventorys = new HashMap<>();
+    private static final HashMap<String, Function<I3Executer,I3Instance>> inventorys = new HashMap<>();
 
-    public static boolean registerInv(String uniqueName,Consumer<I3Executer> inv){
+    public static boolean registerInv(String uniqueName,Function<I3Executer,I3Instance> inv){
         if(inventorys.containsKey(uniqueName)||uniqueName.equals("close")){
             return false;
         }
@@ -32,7 +32,13 @@ public class I3API {
             return;
         }
         if(inventorys.containsKey(uniqueName)){
-            inventorys.get(uniqueName).accept(new I3Executer(p,inv));
+            I3Instance result = inventorys.get(uniqueName).apply(new I3Executer(p,inv));
+
+            if(inv==null||inv.getSize()!=result.getSize()){
+                result.openInv(p);
+            }else{
+                result.updateInv(p);
+            }
         }
     }
 
@@ -42,7 +48,13 @@ public class I3API {
             return;
         }
         if(inventorys.containsKey(uniqueName)){
-            inventorys.get(uniqueName).accept(new I3Executer(p,inv));
+            I3Instance result = inventorys.get(uniqueName).apply(new I3Executer(p,inv,args));
+
+            if(inv==null||inv.getSize()!=result.getSize()){
+                result.openInv(p);
+            }else{
+                result.updateInv(p);
+            }
         }
     }
 }
