@@ -34,6 +34,10 @@ public class I3API {
         if(inventorys.containsKey(uniqueName)){
             I3Instance result = inventorys.get(uniqueName).apply(new I3Executer(p,inv));
 
+            if(result==null){
+                return;
+            }
+
             if(inv==null||inv.getSize()!=result.getSize()){
                 result.openInv(p);
             }else{
@@ -49,6 +53,10 @@ public class I3API {
         }
         if(inventorys.containsKey(uniqueName)){
             I3Instance result = inventorys.get(uniqueName).apply(new I3Executer(p,inv,args));
+
+            if(result==null){
+                return;
+            }
 
             if(inv==null||inv.getSize()!=result.getSize()){
                 result.openInv(p);
