@@ -96,7 +96,7 @@ public class I3Instance implements Listener {
     }
 
     //set item
-    public void setItems(int[] i, I3Item item){
+    public void setItems(I3Item item, int... i){
         for(int ii :i){
             setItem(ii,item);
         }
