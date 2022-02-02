@@ -1,5 +1,6 @@
 package jp.mrik.inventoryiteminterface;
 
+import jp.mrik.inventoryiteminterface.custom.NumberInputer;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class InventoryItemInterface extends JavaPlugin {
@@ -10,6 +11,7 @@ public final class InventoryItemInterface extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         plugin = this;
+        NumberInputer.init();
     }
 
     @Override
