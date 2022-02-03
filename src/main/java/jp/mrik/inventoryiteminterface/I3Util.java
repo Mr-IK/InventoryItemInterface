@@ -5,6 +5,24 @@ import org.bukkit.entity.Player;
 
 public class I3Util {
 
+    public static I3Instance getCustomSizeInv(String name,int size){
+        I3Instance inv = new I3Instance(name,size);
+        inv.fillInv(I3C.create(Material.BLACK_STAINED_GLASS_PANE).setDisplay(" ").getI3Item());
+        inv.setClickCancel(true);
+        return inv;
+    }
+
+    public static I3Instance getCustomSizeInv(Player p,I3Instance inv, String name, int size){
+        if(inv==null||inv.getSize()!=size){
+            return getCustomSizeInv(name,size);
+        }
+        inv.clearEvent();
+        inv.updateTitle(p,name);
+        inv.fillInv(I3C.create(Material.BLACK_STAINED_GLASS_PANE).setDisplay(" ").getI3Item());
+        inv.setClickCancel(true);
+        return inv;
+    }
+
     public static I3Instance get3_9Inv(String name){
         I3Instance inv = new I3Instance(name,27);
         inv.fillInv(I3C.create(Material.BLACK_STAINED_GLASS_PANE).setDisplay(" ").getI3Item());
