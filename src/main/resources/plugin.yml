@@ -3,4 +3,5 @@ version: '${project.version}'
 main: jp.mrik.inventoryiteminterface.InventoryItemInterface
 api-version: 1.16
 authors: [ Mr_IK ]
+depend: [TimerThreadTools]
 description: InventoryItemInterface
