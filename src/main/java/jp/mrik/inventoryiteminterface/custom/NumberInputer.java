@@ -134,6 +134,7 @@ public class NumberInputer {
             });
 
             inv.setItem(i,plus);
+            inv.setItem(num,getBannerI3(0));
 
             I3Item minus = base_minus.getCopy();
             minus.addClickEvent(event -> {
