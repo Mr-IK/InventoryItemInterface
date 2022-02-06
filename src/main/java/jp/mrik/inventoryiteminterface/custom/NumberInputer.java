@@ -149,12 +149,12 @@ public class NumberInputer {
 
         I3Item ok = I3C.create(Material.GREEN_STAINED_GLASS_PANE).setDisplay("§a§l完了").getI3Item();
         ok.addClickEvent(event -> {
-            int a = Integer.parseInt(inv.getItem(9).getItemMeta().getDisplayName())*100000;
-            int b = Integer.parseInt(inv.getItem(10).getItemMeta().getDisplayName())*10000;
-            int c = Integer.parseInt(inv.getItem(11).getItemMeta().getDisplayName())*1000;
-            int d = Integer.parseInt(inv.getItem(12).getItemMeta().getDisplayName())*100;
-            int e = Integer.parseInt(inv.getItem(13).getItemMeta().getDisplayName())*10;
-            int f = Integer.parseInt(inv.getItem(14).getItemMeta().getDisplayName());
+            int a = Integer.parseInt(inv.getItem(18).getItemMeta().getDisplayName())*100000;
+            int b = Integer.parseInt(inv.getItem(19).getItemMeta().getDisplayName())*10000;
+            int c = Integer.parseInt(inv.getItem(20).getItemMeta().getDisplayName())*1000;
+            int d = Integer.parseInt(inv.getItem(21).getItemMeta().getDisplayName())*100;
+            int e = Integer.parseInt(inv.getItem(22).getItemMeta().getDisplayName())*10;
+            int f = Integer.parseInt(inv.getItem(23).getItemMeta().getDisplayName());
             int res = a+b+c+d+e+f;
             result.accept(res);
         });
