@@ -120,7 +120,7 @@ public class NumberInputer {
         I3Item base_plus = I3C.create(Material.WHITE_BANNER).setBannerPattern(
                         new Pattern(DyeColor.BLACK, PatternType.STRAIGHT_CROSS),new Pattern(DyeColor.WHITE, PatternType.BORDER),
                         new Pattern(DyeColor.WHITE, PatternType.STRIPE_BOTTOM),new Pattern(DyeColor.WHITE, PatternType.STRIPE_TOP))
-                .setDisplay("§a§l確率を増やす").setLore("§e通常クリックで+1、シフトクリックで+5します").getI3Item();
+                .setDisplay("§a§l数字を増やす").setLore("§e通常クリックで+1、シフトクリックで+5します").getI3Item();
         for(int i = 9;i<15;i++) {
             int num = i+9;
 
