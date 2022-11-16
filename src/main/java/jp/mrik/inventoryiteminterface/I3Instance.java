@@ -1,5 +1,6 @@
 package jp.mrik.inventoryiteminterface;
 
+import jp.mrik.inventoryiteminterface.rename.UpdateTitle_1_16_5;
 import jp.mrik.timerthreadtools.T3Util;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -52,7 +53,10 @@ public class I3Instance implements Listener {
 
     //updated inventory title
     public void updateTitle(Player p, String title) {
-        updateTitle.sendTitleChangePacket(p,title,inv);
+        if(Bukkit.getVersion().contains("1.16")){
+            updateTitle = new UpdateTitle_1_16_5();
+            updateTitle.sendTitleChangePacket(p,title,inv);
+        }
         this.name = title;
     }
 
