@@ -102,9 +102,9 @@ public class NumberInputer {
         int i = Integer.parseInt(item.getItem().getItemMeta().getDisplayName());
         i = i + edit;
         if(i<0){
-            i = 0;
+            i = i+10;
         }else if(i>9){
-            i = 9;
+            i = i-10;
         }
         return getBannerI3(i);
     }
