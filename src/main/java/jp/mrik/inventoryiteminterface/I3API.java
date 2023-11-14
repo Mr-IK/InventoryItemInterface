@@ -1,6 +1,5 @@
 package jp.mrik.inventoryiteminterface;
 
-import jp.mrik.inventoryiteminterface.rename.UpdateTitle;
 import jp.mrik.timerthreadtools.T3Util;
 import org.bukkit.entity.Player;
 
@@ -8,8 +7,6 @@ import java.util.HashMap;
 import java.util.function.Function;
 
 public class I3API {
-
-    public static UpdateTitle updateTitle = null;
 
     private static final HashMap<String, Function<I3Executer,I3Instance>> inventorys = new HashMap<>();
 

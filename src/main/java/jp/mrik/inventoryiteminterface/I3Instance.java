@@ -1,6 +1,5 @@
 package jp.mrik.inventoryiteminterface;
 
-import jp.mrik.inventoryiteminterface.rename.UpdateTitle_1_16_5;
 import jp.mrik.timerthreadtools.T3Util;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -17,8 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
-
-import static jp.mrik.inventoryiteminterface.I3API.updateTitle;
 
 public class I3Instance implements Listener {
 
@@ -53,10 +50,6 @@ public class I3Instance implements Listener {
 
     //updated inventory title
     public void updateTitle(Player p, String title) {
-        if(Bukkit.getVersion().contains("1.16")){
-            updateTitle = new UpdateTitle_1_16_5();
-            updateTitle.sendTitleChangePacket(p,title,inv);
-        }
         this.name = title;
     }
 
