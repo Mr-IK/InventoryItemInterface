@@ -68,15 +68,15 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.20.2-R0.1-SNAPSHOT</version>
+            <version>1.20.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api-1.20.2</artifactId>
-            <version>1.20.2-R0.1-SNAPSHOT</version>
+            <artifactId>spigot-api-1.20.4</artifactId>
+            <version>1.20.4-R0.1-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>${basedir}/libs/spigot-1.20.2.jar</systemPath>
+            <systemPath>${basedir}/libs/spigot-1.20.4.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>jp.mrik</groupId>
