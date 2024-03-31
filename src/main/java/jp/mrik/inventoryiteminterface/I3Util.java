@@ -1,6 +1,7 @@
 package jp.mrik.inventoryiteminterface;
 
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 public class I3Util {
@@ -12,7 +13,7 @@ public class I3Util {
         return inv;
     }
 
-    public static I3Instance getCustomSizeInv(Player p,I3Instance inv, String name, int size){
+    public static I3Instance getCustomSizeInv(Player p, I3Instance inv, String name, int size){
         if(inv==null||inv.getSize()!=size){
             return getCustomSizeInv(name,size);
         }
@@ -30,7 +31,7 @@ public class I3Util {
         return inv;
     }
 
-    public static I3Instance get3_9Inv(Player p,I3Instance inv, String name){
+    public static I3Instance get3_9Inv(Player p, I3Instance inv, String name){
         if(inv==null||inv.getSize()!=27){
             return get3_9Inv(name);
         }
@@ -41,18 +42,22 @@ public class I3Util {
         return inv;
     }
 
-    public static I3Instance getOnReturn3_9Inv(Player p,String name,String backUnique){
+    public static I3Instance getOnReturn3_9Inv(Player p, String name,String backUnique){
         I3Instance inv = get3_9Inv(name);
         I3Item i3 = I3C.create(Material.DARK_OAK_DOOR).setDisplay("§c§l戻る").setLore("§e前のページに戻ります。").getI3Item();
-        i3.addClickEvent(event -> I3API.openInv(backUnique,p,inv));
+        i3.addClickEvent(event -> {
+            p.playSound(p.getLocation(), Sound.UI_BUTTON_CLICK,1.0f,1.0f);
+            I3API.openInv(backUnique,p,inv);
+        });
         inv.setItem(18,i3);
         return inv;
     }
 
-    public static I3Instance getOnReturn3_9Inv(Player p,I3Instance invs,String name,String backUnique){
+    public static I3Instance getOnReturn3_9Inv(Player p, I3Instance invs, String name, String backUnique){
         I3Instance inv = get3_9Inv(p,invs,name);
         I3Item i3 = I3C.create(Material.DARK_OAK_DOOR).setDisplay("§c§l戻る").setLore("§e前のページに戻ります。").getI3Item();
         i3.addClickEvent(event -> {
+            p.playSound(p.getLocation(), Sound.UI_BUTTON_CLICK,1.0f,1.0f);
             I3API.openInv(backUnique,p,inv);
         });
         inv.setItem(18,i3);
@@ -66,7 +71,7 @@ public class I3Util {
         return inv;
     }
 
-    public static I3Instance get6_9Inv(Player p,I3Instance inv, String name){
+    public static I3Instance get6_9Inv(Player p, I3Instance inv, String name){
         if(inv==null||inv.getSize()!=54){
             return get6_9Inv(name);
         }
@@ -77,7 +82,7 @@ public class I3Util {
         return inv;
     }
 
-    public static I3Instance getListInv(Player p, I3Instance invs,String name,int page,int max,String listUnique,String backUnique){
+    public static I3Instance getListInv(Player p, I3Instance invs, String name, int page, int max, String listUnique, String backUnique){
         I3Instance inv = get6_9Inv(p,invs,name+" Page:"+page);
         inv.clearInv();
         I3Item wall = I3C.create(Material.BLACK_STAINED_GLASS_PANE).setDisplay(" ").getI3Item();
@@ -97,7 +102,10 @@ public class I3Util {
         }
         inv.setItems(wall,47,48,50,51);
         I3Item i3 = I3C.create(Material.DARK_OAK_DOOR).setDisplay("§c§l戻る").setLore("§e前のページに戻ります。").getI3Item();
-        i3.addClickEvent(event -> I3API.openInv(backUnique,p,inv));
+        i3.addClickEvent(event -> {
+            p.playSound(p.getLocation(), Sound.UI_BUTTON_CLICK,1.0f,1.0f);
+            I3API.openInv(backUnique,p,inv);
+        });
         inv.setItem(49, i3);
         inv.setClickCancel(true);
         return inv;
