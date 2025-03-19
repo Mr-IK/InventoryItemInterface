@@ -82,8 +82,19 @@ public class I3Util {
         return inv;
     }
 
-    public static I3Instance getListInv(Player p, I3Instance invs, String name, int page, int max, String listUnique, String backUnique){
-        I3Instance inv = get6_9Inv(p,invs,name+" Page:"+page);
+    public static I3IList get6_9ListInv(Player p, I3Instance inv, String name){
+        if(inv==null||inv.getSize()!=54||!(inv instanceof I3IList)){
+            return new I3IList(name, 0);
+        }
+        I3IList in = (I3IList)inv;
+        in.clearEvent();
+        in.updateTitle(p,name);
+        in.setClickCancel(true);
+        return in;
+    }
+
+    public static I3IList getListInv(Player p, I3Instance invs, String name, int page, int max, String listUnique, String backUnique){
+        I3IList inv = get6_9ListInv(p, invs, name+" Page:"+page);
         inv.clearInv();
         I3Item wall = I3C.create(Material.BLACK_STAINED_GLASS_PANE).setDisplay(" ").getI3Item();
         if(page>0){
