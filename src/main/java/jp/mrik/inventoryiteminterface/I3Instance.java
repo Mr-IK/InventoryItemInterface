@@ -63,7 +63,9 @@ public class I3Instance implements Listener {
 
     //setting item
     public void setItem(int i, I3Item item){
-        inv.setItem(i,item.getItem());
+        if(size>i && i >= 0){
+            inv.setItem(i,item.getItem());
+        }
         itemMap.put(i,item);
     }
 
