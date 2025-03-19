@@ -99,14 +99,20 @@ public class I3Util {
         I3Item wall = I3C.create(Material.BLACK_STAINED_GLASS_PANE).setDisplay(" ").getI3Item();
         if(page>0){
             I3Item back = I3C.create(Material.WHITE_STAINED_GLASS_PANE).setDisplay("§f§l§o前のページへ").getI3Item();
-            back.addClickEvent(event -> I3API.openInv(listUnique,p,inv,(page-1)+""));
+            back.addClickEvent(event -> {
+                inv.setPage(page-1);
+                I3API.openInv(listUnique,p,inv,(page-1)+"");
+            });
             inv.setItems(back,45,46);
         }else{
             inv.setItems(wall,45,46);
         }
         if(page<max){
             I3Item walk = I3C.create(Material.WHITE_STAINED_GLASS_PANE).setDisplay("§f§l§o次のページへ").getI3Item();
-            walk.addClickEvent(event -> I3API.openInv(listUnique,p,inv,(page+1)+""));
+            walk.addClickEvent(event -> {
+                inv.setPage(page+1);
+                I3API.openInv(listUnique,p,inv,(page+1)+"");
+            });
             inv.setItems(walk,52,53);
         }else{
             inv.setItems(wall,52,53);
